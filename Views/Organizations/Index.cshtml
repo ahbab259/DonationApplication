@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DonationApplication.Models.OrganizationsModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "NewOrganizationCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationCountryCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationPhone)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganizationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganizationType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganizationDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganizationCountryCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganizationEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganizationPhone)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

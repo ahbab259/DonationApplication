@@ -1,0 +1,67 @@
+﻿@model DonationApplication.Models.OrganizationsModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OrganizationsModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationCountryCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationCountryCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationPhone)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
