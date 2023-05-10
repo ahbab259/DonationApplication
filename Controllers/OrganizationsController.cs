@@ -28,14 +28,23 @@ namespace DonationApplication.Controllers
             return View("Details", organization);
         }
 
-        public ActionResult NewOrganizationCreate()
+        public ActionResult NewOrganizationCreate(int id)
         {
+            CountryDAO countryDAO = new CountryDAO();
+
+            ViewBag.CountrySelectList = new SelectList(countryDAO.GetAllCountry(), "COUNTRY_CODE", "COUNTRY_NAME");
             return View("NewOrganizationCreate");
         }
 
         public ActionResult ProcessCreate(OrganizationsModel org)
         {
+            CountryDAO countryDAO = new CountryDAO();
+            List<CountryModel> countries = new List<CountryModel>();
+            countries = countryDAO.GetAllCountry();
+
             OrganizationDAO orgDao = new OrganizationDAO();
+            string selectedCountryName = countries.Where(c => c.COUNTRY_CODE == org.OrganizationCountryCode).FirstOrDefault().COUNTRY_NAME;
+            org.OrganizationCountryName = selectedCountryName;
             int success = orgDao.insertOrUpdateOrganization(org);
 
             return View("Details", org);
@@ -43,6 +52,9 @@ namespace DonationApplication.Controllers
 
         public ActionResult Edit(int id)
         {
+            CountryDAO countryDAO = new CountryDAO();
+            ViewBag.CountrySelectList = new SelectList(countryDAO.GetAllCountry(), "COUNTRY_CODE", "COUNTRY_NAME");
+
             OrganizationsModel organization = new OrganizationsModel();
             OrganizationDAO organizationsDAO = new OrganizationDAO();
             organization = organizationsDAO.GetOrganizationDetails(id);

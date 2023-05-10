@@ -17,8 +17,12 @@ namespace DonationApplication.Models
         [DisplayName("Organization Type *")]
         public string OrganizationType { get; set; }
         [Required]
-        [DisplayName("OrganizationDescription *")]
+        [DisplayName("Organization Description *")]
         public string OrganizationDescription { get; set; }
+
+        [Required]
+        [DisplayName("Organization Country *")]
+        public string OrganizationCountryName { get; set; }
         [Required]
         [DisplayName("Organization Country Code *")]
         public string OrganizationCountryCode { get; set; }
@@ -29,26 +33,26 @@ namespace DonationApplication.Models
         [DisplayName("Organization Phone *")]
         public string OrganizationPhone{ get; set; }
 
-        public OrganizationsModel()
-        {
-            Id = -1;
-            OrganizationName = "No Name";
-            OrganizationType = "No Type";
-            OrganizationDescription = "No Description";
-            OrganizationCountryCode = "00000";
-            OrganizationEmail = "No Email";
-            OrganizationPhone = "No Phone";
-        }
+        //public OrganizationsModel()
+        //{
+        //    Id = 0;
+        //    OrganizationName = "No Name";
+        //    OrganizationType = "No Type";
+        //    OrganizationDescription = "No Description";
+        //    OrganizationCountryCode = "00000";
+        //    OrganizationEmail = "No Email";
+        //    OrganizationPhone = "No Phone";
+        //}
 
-        public OrganizationsModel(int id, string organizationName, string organizationType, string organizationDescription, string organizationCountryCode, string organizationEmail, string organizationPhone)
-        {
-            Id = id;
-            OrganizationName = organizationName;
-            OrganizationType = organizationType;
-            OrganizationDescription = organizationDescription;
-            OrganizationCountryCode = organizationCountryCode;
-            OrganizationEmail = organizationEmail;
-            OrganizationPhone = organizationPhone;
-        }
+        //public OrganizationsModel(int id, string organizationName, string organizationType, string organizationDescription, string organizationCountryCode, string organizationEmail, string organizationPhone)
+        //{
+        //    Id = id;
+        //    OrganizationName = organizationName;
+        //    OrganizationType = organizationType;
+        //    OrganizationDescription = organizationDescription;
+        //    OrganizationCountryCode = organizationCountryCode;
+        //    OrganizationEmail = organizationEmail;
+        //    OrganizationPhone = organizationPhone;
+        //}
     }
 }

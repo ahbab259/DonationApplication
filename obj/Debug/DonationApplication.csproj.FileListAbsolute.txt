@@ -72,8 +72,8 @@ C:\Users\ahbab259\source\repos\DonationApplication\bin\System.Web.WebPages.Razor
 C:\Users\ahbab259\source\repos\DonationApplication\bin\Newtonsoft.Json.xml
 C:\Users\ahbab259\source\repos\DonationApplication\bin\Antlr3.Runtime.pdb
 C:\Users\ahbab259\source\repos\DonationApplication\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\ahbab259\source\repos\DonationApplication\obj\Debug\DonationApplication.csprojAssemblyReference.cache
 C:\Users\ahbab259\source\repos\DonationApplication\obj\Debug\DonationApplication.csproj.CoreCompileInputs.cache
 C:\Users\ahbab259\source\repos\DonationApplication\obj\Debug\DonationApplication.csproj.CopyComplete
 C:\Users\ahbab259\source\repos\DonationApplication\obj\Debug\DonationApplication.dll
 C:\Users\ahbab259\source\repos\DonationApplication\obj\Debug\DonationApplication.pdb
+C:\Users\ahbab259\source\repos\DonationApplication\obj\Debug\DonationApplication.csprojAssemblyReference.cache
