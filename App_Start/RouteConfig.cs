@@ -17,7 +17,7 @@ namespace DonationApplication
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 //defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-                defaults: new { controller = "Organizations", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Organizations", action = "ShowAllCountries", id = UrlParameter.Optional }
             );
         }
     }

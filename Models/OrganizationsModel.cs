@@ -33,26 +33,34 @@ namespace DonationApplication.Models
         [DisplayName("Organization Phone *")]
         public string OrganizationPhone{ get; set; }
 
-        public OrganizationsModel()
-        {
-            Id = 0;
-            OrganizationName = "No Name";
-            OrganizationType = "No Type";
-            OrganizationDescription = "No Description";
-            OrganizationCountryCode = "00000";
-            OrganizationEmail = "No Email";
-            OrganizationPhone = "No Phone";
-        }
+        [Required]
+        [DisplayName("Organization Code *")]
+        public string OrganizationCode { get; set; }
 
-        public OrganizationsModel(int id, string organizationName, string organizationType, string organizationDescription, string organizationCountryCode, string organizationEmail, string organizationPhone)
-        {
-            Id = id;
-            OrganizationName = organizationName;
-            OrganizationType = organizationType;
-            OrganizationDescription = organizationDescription;
-            OrganizationCountryCode = organizationCountryCode;
-            OrganizationEmail = organizationEmail;
-            OrganizationPhone = organizationPhone;
-        }
+        //public OrganizationsModel()
+        //{
+        //    Id = 0;
+        //    OrganizationName = "No Name";
+        //    OrganizationType = "No Type";
+        //    OrganizationDescription = "No Description";
+        //    OrganizationCountryName = "No Country";
+        //    OrganizationCountryCode = "00000";
+        //    OrganizationEmail = "No Email";
+        //    OrganizationPhone = "No Phone";
+        //    OrganizationCode = "No Code";
+        //}
+
+        //public OrganizationsModel(int id, string organizationName, string organizationType, string organizationDescription, string organizationCountryName, string organizationCountryCode, string organizationEmail, string organizationPhone, string organizationCode)
+        //{
+        //    Id = id;
+        //    OrganizationName = organizationName;
+        //    OrganizationType = organizationType;
+        //    OrganizationDescription = organizationDescription;
+        //    OrganizationCountryName = organizationCountryName;
+        //    OrganizationCountryCode = organizationCountryCode;
+        //    OrganizationEmail = organizationEmail;
+        //    OrganizationPhone = organizationPhone;
+        //    OrganizationCode = organizationCode;
+        //}
     }
 }

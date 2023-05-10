@@ -122,13 +122,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrganizationsController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Data\CountryDAO.cs" />
     <Compile Include="Data\OrganizationDAO.cs" />
+    <Compile Include="Data\ProjectDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CountryModel.cs" />
     <Compile Include="Models\OrganizationsModel.cs" />
+    <Compile Include="Models\ProjectModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +175,7 @@
     <Content Include="Views\Organizations\NewOrganizationCreate.cshtml" />
     <Content Include="Views\Organizations\DetailsBeforeDelete.cshtml" />
     <Content Include="Views\Organizations\CountryList.cshtml" />
+    <Content Include="Views\Projects\CreateNewProject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

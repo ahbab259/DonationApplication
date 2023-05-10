@@ -66,9 +66,11 @@ namespace DonationApplication.Data
                 organization.OrganizationName = dr["OrganizationName"].ToString();
                 organization.OrganizationType = dr["OrganizationType"].ToString();
                 organization.OrganizationDescription = dr["OrganizationDescription"].ToString();
+                organization.OrganizationCountryName = dr["OrganizationCountryName"].ToString();
                 organization.OrganizationCountryCode = dr["OrganizationCountryCode"].ToString();
                 organization.OrganizationEmail = dr["OrganizationEmail"].ToString();
                 organization.OrganizationPhone = dr["OrganizationPhone"].ToString();
+                organization.OrganizationCode = dr["OrganizationCode"].ToString();
             }
 
             return organization;
