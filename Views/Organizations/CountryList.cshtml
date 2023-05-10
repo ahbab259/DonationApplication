@@ -1,0 +1,22 @@
+﻿@model IEnumerable<DonationApplication.Models.CountryModel>
+
+@{
+    ViewBag.Title = "CountryList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Country List</h2>
+
+
+<div style="display: flex; flex-wrap: wrap;">
+    @foreach (var country in Model)
+    {
+    <div style="width: 33.33%; padding: 10px;">
+        <div style="text-align: center;">
+            <img src="@Url.Action("GetImage", "Organizations", new { id = country.Id })" alt="@country.Id" style="max-width: 200px; max-height: 150px; border: 1px solid black;" />
+        </div>
+        @*<h3 style="text-align: center;">@country.COUNTRY_NAME</h3>*@
+        <h3 style="text-align: center;"><a href="@Url.Action("CountryDetails", "Organizations", new { country_code = country.COUNTRY_CODE })">@country.COUNTRY_NAME</a></h3>
+    </div>
+    }
+</div>

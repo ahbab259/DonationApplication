@@ -28,7 +28,7 @@ namespace DonationApplication.Controllers
             return View("Details", organization);
         }
 
-        public ActionResult NewOrganizationCreate(int id)
+        public ActionResult NewOrganizationCreate()
         {
             CountryDAO countryDAO = new CountryDAO();
 
@@ -76,6 +76,41 @@ namespace DonationApplication.Controllers
             int success = organizationsDAO.DeleteOrganization(id);
 
             organizations = organizationsDAO.FetchAll();
+            return View("Index", organizations);
+        }
+
+        public ActionResult ShowAllCountries()
+        {
+            List<CountryModel> countries = new List<CountryModel>();
+            CountryDAO countryDAO = new CountryDAO();
+            countries = countryDAO.GetAllCountry();
+
+            return View("CountryList", countries);
+        }
+
+        public ActionResult GetImage(int id)
+        {
+            CountryModel country = new CountryModel();
+            CountryDAO countryDAO = new CountryDAO();
+            country = countryDAO.GetCountryImage(id);
+
+            var image = country.COUNTRY_IMAGE;
+            if (image != null)
+            {
+                return File(image, "image/jpeg");
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        public ActionResult CountryDetails(string country_code)
+        {
+            List<OrganizationsModel> organizations = new List<OrganizationsModel>();
+            OrganizationDAO organizationsDAO = new OrganizationDAO();
+            organizations = organizationsDAO.GetOrganizationByCountryCode(country_code);
+
             return View("Index", organizations);
         }
     }

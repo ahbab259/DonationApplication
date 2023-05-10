@@ -40,5 +40,34 @@ namespace DonationApplication.Data
             return countryList;
         }
 
+        public CountryModel GetCountryImage(int id)
+        {
+            DataTable dt = new DataTable();
+            CountryModel country = new CountryModel();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand cmd = new SqlCommand("dbo.GET_COUNTRY_IMAGE", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", id);
+                dt.Load(cmd.ExecuteReader());
+                connection.Close();
+            }
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                country.Id = Convert.ToInt32(dr["Id"]);
+                country.COUNTRY_CODE = dr["COUNTRY_CODE"].ToString();
+                country.COUNTRY_CODE_ALPHA_3 = dr["COUNTRY_CODE_ALPHA_3"].ToString();
+                country.COUNTRY_NAME = dr["COUNTRY_NAME"].ToString();
+
+                country.COUNTRY_IMAGE = (byte[])(dr["COUNTRY_IMAGE"]);
+
+            }
+
+            return country;
+        }
+
     }
 }

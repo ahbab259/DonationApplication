@@ -35,6 +35,7 @@ namespace DonationApplication.Data
                 organization.OrganizationType = dr["OrganizationType"].ToString();
                 organization.OrganizationDescription = dr["OrganizationDescription"].ToString();
                 organization.OrganizationCountryCode = dr["OrganizationCountryCode"].ToString();
+                organization.OrganizationCountryName = dr["OrganizationCountryName"].ToString();
                 organization.OrganizationEmail = dr["OrganizationEmail"].ToString();
                 organization.OrganizationPhone = dr["OrganizationPhone"].ToString();
                 returnList.Add(organization);
@@ -135,6 +136,38 @@ namespace DonationApplication.Data
                 success = 0;
                 return success;
             }
+        }
+
+        public List<OrganizationsModel> GetOrganizationByCountryCode(string country_code)
+        {
+            DataTable dt = new DataTable();
+            List<OrganizationsModel> countryList = new List<OrganizationsModel>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand cmd = new SqlCommand("dbo.GET_ORGANIZATIONS_BY_COUNTRY_CODE", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@OrganizationCountryCode", country_code);
+                dt.Load(cmd.ExecuteReader());
+                connection.Close();
+            }
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                OrganizationsModel organization = new OrganizationsModel();
+                organization.Id = Convert.ToInt32(dr["Id"]);
+                organization.OrganizationName = dr["OrganizationName"].ToString();
+                organization.OrganizationType = dr["OrganizationType"].ToString();
+                organization.OrganizationDescription = dr["OrganizationDescription"].ToString();
+                organization.OrganizationCountryCode = dr["OrganizationCountryCode"].ToString();
+                organization.OrganizationCountryName = dr["OrganizationCountryName"].ToString();
+                organization.OrganizationEmail = dr["OrganizationEmail"].ToString();
+                organization.OrganizationPhone = dr["OrganizationPhone"].ToString();
+                countryList.Add(organization);
+            }
+
+            return countryList;
         }
     }
 }

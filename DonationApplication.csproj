@@ -171,6 +171,7 @@
     <Content Include="Views\Organizations\Details.cshtml" />
     <Content Include="Views\Organizations\NewOrganizationCreate.cshtml" />
     <Content Include="Views\Organizations\DetailsBeforeDelete.cshtml" />
+    <Content Include="Views\Organizations\CountryList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
