@@ -23,10 +23,10 @@ namespace DonationApplication.Models
         [DisplayName("PROJECT ORGANIZATION CODE *")]
         public string PROJECT_ORGANIZATION_CODE { get; set; }
         [Required]
-        [DisplayName("PROJECT FUND")]
-        public int PROJECT_FUND { get; set; }
+        [DisplayName("PROJECT CURRENT FUND")]
+        public decimal PROJECT_FUND { get; set; }
         [Required]
         [DisplayName("PROJECT TARGET FUND")]
-        public int PROJECT_TARGET_FUND { get; set; }
+        public decimal PROJECT_TARGET_FUND { get; set; }
     }
 }
