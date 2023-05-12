@@ -46,6 +46,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -122,9 +125,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrganizationsController.cs" />
+    <Compile Include="Controllers\PayPalController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Data\CountryDAO.cs" />
     <Compile Include="Data\OrganizationDAO.cs" />
+    <Compile Include="Data\PaypalConfiguration.cs" />
     <Compile Include="Data\ProjectDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -178,6 +183,8 @@
     <Content Include="Views\Projects\CreateNewProject.cshtml" />
     <Content Include="Views\Projects\ViewProjectListByCountryCode.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\PayPal\PaymentWithPaypalSuccess.cshtml" />
+    <Content Include="Views\PayPal\PaymentWithPaypalFailure.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
