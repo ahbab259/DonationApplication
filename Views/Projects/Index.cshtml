@@ -5,9 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    .project-list-item:hover {
+        background-color: #f5f5f5;
+        cursor: pointer;
+    }
+</style>
+
 <h2>All Projetcs</h2>
 
-<table class="table">
+<table class="table" id="projectTable">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.PROJECT_NAME)
@@ -30,32 +37,49 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PROJECT_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PROJECT_DESCRIPTION)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PROJECT_CODE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PROJECT_ORGANIZATION_CODE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PROJECT_FUND)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PROJECT_TARGET_FUND)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr class="projectRow project-list-item" data-url="@Url.Action("Details", "Projects", new { id = item.Id })">
+            <td>
+                @Html.DisplayFor(modelItem => item.PROJECT_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PROJECT_DESCRIPTION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PROJECT_CODE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PROJECT_ORGANIZATION_CODE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PROJECT_FUND)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PROJECT_TARGET_FUND)
+            </td>
+            <td>
+                @Html.ActionLink("Donate", "PaymentWithPaypal", "PayPal", new { id = item.Id }, new { @class = "btn btn-success" })
+            </td>
+        </tr>
+    }
 
 </table>
+
+
+@section Scripts {
+    <script src="~/Scripts/jquery-3.6.4.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#projectTable .projectRow").click(function (e) {
+                // Exclude the Donate button from the click event
+                if ($(e.target).is('.btn-success')) {
+                    return;
+                }
+
+                var url = $(this).data("url");
+                window.open(url, "_blank");
+            });
+        });
+    </script>
+}
