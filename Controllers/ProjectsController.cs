@@ -61,5 +61,15 @@ namespace DonationApplication.Controllers
 
             return View("ViewProjectListByCountryCode", projects);
         }
+
+        public ActionResult GetProjectDetails(int id)
+        {
+            ProjectModel project = new ProjectModel();
+            ProjectDAO _projectDAO = new ProjectDAO();
+            project = _projectDAO.GetProjectsDetails(id);
+
+
+            return View("GetProjectDetails", project);
+        }
     }
 }

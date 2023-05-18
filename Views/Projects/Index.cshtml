@@ -39,7 +39,7 @@
 
     @foreach (var item in Model)
     {
-        <tr class="projectRow project-list-item" data-url="@Url.Action("Details", "Projects", new { id = item.Id })">
+        <tr class="projectRow project-list-item" data-url="@Url.Action("GetProjectDetails", "Projects", new { id = item.Id })">
             <td>
                 @Html.DisplayFor(modelItem => item.PROJECT_NAME)
             </td>

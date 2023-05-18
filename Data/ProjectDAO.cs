@@ -162,5 +162,43 @@ namespace DonationApplication.Data
             }
             return projectList;
         }
+
+        public ProjectModel GetProjectsDetails(int projectId)
+        {
+            ProjectModel project = new ProjectModel();
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand("dbo.GET_PROJECT_DETAILS_BY_ID", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@projectId", projectId);
+
+                    dt.Load(cmd.ExecuteReader());
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                project.Id = Convert.ToInt32(dr["Id"]);
+                project.PROJECT_NAME = dr["PROJECT_NAME"].ToString();
+                project.PROJECT_DESCRIPTION = dr["PROJECT_DESCRIPTION"].ToString();
+                project.PROJECT_CODE = dr["PROJECT_CODE"].ToString();
+                project.PROJECT_ORGANIZATION_CODE = dr["PROJECT_ORGANIZATION_CODE"].ToString();
+                project.PROJECT_FUND = Convert.ToDecimal(dr["PROJECT_FUND"].ToString());
+                project.PROJECT_TARGET_FUND = Convert.ToDecimal(dr["PROJECT_TARGET_FUND"].ToString());
+
+            }
+            return project;
+        }
     }
 }

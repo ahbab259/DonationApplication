@@ -1,0 +1,67 @@
+﻿@model DonationApplication.Models.ProjectModel
+
+@{
+    ViewBag.Title = "GetProjectDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Project Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PROJECT_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROJECT_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROJECT_DESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROJECT_DESCRIPTION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROJECT_CODE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROJECT_CODE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROJECT_ORGANIZATION_CODE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROJECT_ORGANIZATION_CODE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROJECT_FUND)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROJECT_FUND)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROJECT_TARGET_FUND)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROJECT_TARGET_FUND)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Donate", "PaymentWithPaypal", "PayPal", new { id = Model.Id }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
