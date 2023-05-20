@@ -50,7 +50,7 @@ namespace DonationApplication.Data
             }
             return projectList;
         }
-        public int insertOrUpdateProjects(ProjectModel project)
+        public int insertOrUpdateProjects(ProjectModel project, string imageLocations)
         {
             int success = 1;
 
@@ -72,6 +72,34 @@ namespace DonationApplication.Data
 
                     cmd.ExecuteNonQuery();
                     connection.Close();
+                }
+
+                //for storing the images
+                List<string> imageList = new List<string>();
+                if (imageLocations != "")
+                {
+                    if (imageLocations.Contains(",")) 
+                    { 
+                        string[] images = imageLocations.Split(',');
+                        imageList = images.ToList();
+                    }
+                }
+                foreach(string image in imageList)
+                {
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+
+                        SqlCommand cmd = new SqlCommand("dbo.INSERT_PROJECT_IMAGE", connection);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@IMAGE_NAME", image);
+                        cmd.Parameters.AddWithValue("@IMAGE_PROJECT_CODE", project.PROJECT_CODE);
+
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                    }
+
+                    //for storing the images
                 }
 
                 return success;

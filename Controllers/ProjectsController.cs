@@ -2,6 +2,7 @@
 using DonationApplication.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -43,12 +44,30 @@ namespace DonationApplication.Controllers
             return View("CreateNewProject", project);
         }
 
-        public ActionResult CreateProjectInDB(ProjectModel project)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateProjectInDB(ProjectModel project, List<HttpPostedFileBase> images)
         {
+            string imageLocations = "";
+            if (images != null && images.Count > 0)
+            {
+                foreach (var image in images)
+                {
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+                    var imagePath = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                    image.SaveAs(imagePath);
+                    imageLocations += imagePath.ToString() + ",";
+                }
+
+            }
+            if (imageLocations != "")
+            {
+                imageLocations = imageLocations.Remove(imageLocations.Length - 1, 1);
+            }
+
             ProjectDAO _dao = new ProjectDAO();
-            int success = _dao.insertOrUpdateProjects(project);
-            return View("Index", project.PROJECT_ORGANIZATION_CODE);
-            //return RedirectToAction("GetProjectsByCountryCode", new { country_code = project. });
+            int success = _dao.insertOrUpdateProjects(project, imageLocations);
+            return RedirectToAction("Index");
         }
 
         //getting projects by countryCode
