@@ -5,6 +5,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    .slider {
+        width: 100%;
+    }
+
+        .slider img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+</style>
+
 <h2>Project Details</h2>
 
 <div>
@@ -13,7 +25,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.PROJECT_NAME)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.PROJECT_NAME)
         </dd>
@@ -21,7 +32,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.PROJECT_DESCRIPTION)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.PROJECT_DESCRIPTION)
         </dd>
@@ -29,7 +39,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.PROJECT_CODE)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.PROJECT_CODE)
         </dd>
@@ -37,7 +46,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.PROJECT_ORGANIZATION_CODE)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.PROJECT_ORGANIZATION_CODE)
         </dd>
@@ -45,7 +53,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.PROJECT_FUND)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.PROJECT_FUND)
         </dd>
@@ -53,15 +60,40 @@
         <dt>
             @Html.DisplayNameFor(model => model.PROJECT_TARGET_FUND)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.PROJECT_TARGET_FUND)
         </dd>
-
     </dl>
 </div>
+
+<div class="slider">
+    @if (ViewBag.Images != null)
+    {
+        foreach (var imagePath in ViewBag.Images)
+        {
+            <img src="@Url.Content("~/Images/" + imagePath)" alt="Project Image" />
+        }
+    }
+</div>
+
 <p>
-    @Html.ActionLink("Donate", "PaymentWithPaypal", "PayPal", new { id = Model.Id }, new { @class = "btn btn-success" })
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.slider').slick({
+            dots: true,
+            infinite: true,
+            speed: 500,
+            fade: true,
+            cssEase: 'linear',
+            autoplay: true,
+            autoplaySpeed: 5000
+        });
+    });
+</script>

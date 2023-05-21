@@ -228,5 +228,38 @@ namespace DonationApplication.Data
             }
             return project;
         }
+
+        public List<string> GetImageListByProjectCode(string projectCode)
+        {
+            List<string> images = new List<string>();
+
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand("dbo.GET_PROJECT_IMAGES_BY_PROJECT_CODE", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@projectCode", projectCode);
+
+                    dt.Load(cmd.ExecuteReader());
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                images.Add(dr["IMAGE_NAME"].ToString());
+            }
+
+            return images;
+        }
     }
 }

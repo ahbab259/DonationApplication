@@ -56,7 +56,7 @@ namespace DonationApplication.Controllers
                     var fileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
                     var imagePath = Path.Combine(Server.MapPath("~/Images/"), fileName);
                     image.SaveAs(imagePath);
-                    imageLocations += imagePath.ToString() + ",";
+                    imageLocations += fileName.ToString() + ",";
                 }
 
             }
@@ -86,6 +86,9 @@ namespace DonationApplication.Controllers
             ProjectModel project = new ProjectModel();
             ProjectDAO _projectDAO = new ProjectDAO();
             project = _projectDAO.GetProjectsDetails(id);
+            List<string> images = new List<string>();
+            images = _projectDAO.GetImageListByProjectCode(project.PROJECT_CODE);
+            ViewBag.Images = images;
 
 
             return View("GetProjectDetails", project);
