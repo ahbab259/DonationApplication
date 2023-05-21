@@ -164,7 +164,7 @@ namespace DonationApplication.Data
 
                     SqlCommand cmd = new SqlCommand("dbo.GET_PROJECTS_BY_ORGANIZATION_CODE", connection);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@OrganizationCountryCode", orgCode);
+                    cmd.Parameters.AddWithValue("@projectOrganizationCode", orgCode);
 
                     dt.Load(cmd.ExecuteReader());
                     connection.Close();

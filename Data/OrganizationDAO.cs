@@ -32,6 +32,7 @@ namespace DonationApplication.Data
                 OrganizationsModel organization = new OrganizationsModel();
                 organization.Id = Convert.ToInt32(dr["Id"]);
                 organization.OrganizationName = dr["OrganizationName"].ToString();
+                organization.OrganizationCode = dr["OrganizationCode"].ToString();
                 organization.OrganizationType = dr["OrganizationType"].ToString();
                 organization.OrganizationDescription = dr["OrganizationDescription"].ToString();
                 organization.OrganizationCountryCode = dr["OrganizationCountryCode"].ToString();
@@ -91,6 +92,7 @@ namespace DonationApplication.Data
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Id", org.Id);
                     cmd.Parameters.AddWithValue("@OrganizationName", org.OrganizationName);
+                    cmd.Parameters.AddWithValue("@OrganizationCode", org.OrganizationCode);
                     cmd.Parameters.AddWithValue("@OrganizationType", org.OrganizationType);
                     cmd.Parameters.AddWithValue("@OrganizationDescription", org.OrganizationDescription);
                     cmd.Parameters.AddWithValue("@OrganizationCountryCode", org.OrganizationCountryCode);
@@ -166,6 +168,7 @@ namespace DonationApplication.Data
                 organization.OrganizationCountryName = dr["OrganizationCountryName"].ToString();
                 organization.OrganizationEmail = dr["OrganizationEmail"].ToString();
                 organization.OrganizationPhone = dr["OrganizationPhone"].ToString();
+                organization.OrganizationCode = dr["OrganizationCode"].ToString();
                 countryList.Add(organization);
             }
 
