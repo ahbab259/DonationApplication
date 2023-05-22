@@ -1,0 +1,150 @@
+﻿@model DonationApplication.Models.UserModel
+
+@{
+    ViewBag.Title = "User Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .row-spacing {
+        margin-top: 20px;
+    }
+</style>
+
+<h2>User Registration</h2>
+
+@using (Html.BeginForm("RegisterNewUser", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.FIRST_NAME, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.FIRST_NAME, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FIRST_NAME, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.MIDDLE_NAME, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.MIDDLE_NAME, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MIDDLE_NAME, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.LAST_NAME, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.LAST_NAME, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LAST_NAME, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.EMAIL, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.EMAIL, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.USER_NAME, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.USER_NAME, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.USER_NAME, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.PASSWORD, htmlAttributes: new { @class = "control-label" })
+                @Html.PasswordFor(model => model.PASSWORD, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Confirm Password", htmlAttributes: new { @class = "control-label" })
+                @Html.Password("CONFIRM_PASSWORD", null, new { @class = "form-control", id = "confirm-password-input" })
+                <span id="confirm-password-error" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.ADDRESS_LINE_1, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.ADDRESS_LINE_1, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ADDRESS_LINE_1, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.ADDRESS_LINE_2, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.ADDRESS_LINE_2, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ADDRESS_LINE_2, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.POSTAL_CODE, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.POSTAL_CODE, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.POSTAL_CODE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.CITY, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.CITY, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CITY, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.STATE, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.STATE, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.STATE, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.USER_COUNTRY, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.USER_COUNTRY, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.USER_COUNTRY, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.USER_CELL_PHONE, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.USER_CELL_PHONE, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.USER_CELL_PHONE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-offset-10 col-md-2">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+    $(document).ready(function () {
+        // Add event listener to password and confirm password fields
+        $("#password-input, #confirm-password-input").on("keyup", function () {
+            var password = $("#password-input").val();
+            var confirmPassword = $("#confirm-password-input").val();
+
+            if (password === confirmPassword) {
+                $("#confirm-password-error").text(""); // Clear the error message
+            } else {
+                $("#confirm-password-error").text("The password and confirmation password do not match.");
+            }
+        });
+    });
+</script>
+}

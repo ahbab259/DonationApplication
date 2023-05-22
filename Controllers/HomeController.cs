@@ -26,5 +26,12 @@ namespace DonationApplication.Controllers
 
             return View();
         }
+
+        public ActionResult RegisterNewUser()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View("RegisterNewUser");
+        }
     }
 }

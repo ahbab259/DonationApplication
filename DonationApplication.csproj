@@ -137,6 +137,7 @@
     <Compile Include="Models\CountryModel.cs" />
     <Compile Include="Models\OrganizationsModel.cs" />
     <Compile Include="Models\ProjectModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -188,6 +189,7 @@
     <Content Include="Views\PayPal\PaymentWithPaypalSuccess.cshtml" />
     <Content Include="Views\PayPal\PaymentWithPaypalFailure.cshtml" />
     <Content Include="Views\Projects\GetProjectDetails.cshtml" />
+    <Content Include="Views\Home\RegisterNewUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
