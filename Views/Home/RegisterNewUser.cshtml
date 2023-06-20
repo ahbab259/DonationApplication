@@ -64,8 +64,8 @@
                 @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
             </div>
             <div class="col-md-4">
-                @Html.Label("Confirm Password", htmlAttributes: new { @class = "control-label" })
-                @Html.Password("CONFIRM_PASSWORD", null, new { @class = "form-control", id = "confirm-password-input" })
+                @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label" })
+                @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control", id = "confirm-password-input" })
                 <span id="confirm-password-error" class="text-danger"></span>
             </div>
         </div>
@@ -129,22 +129,26 @@
         </div>
     </div>
 }
-
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-<script>
-    $(document).ready(function () {
-        // Add event listener to password and confirm password fields
-        $("#password-input, #confirm-password-input").on("keyup", function () {
-            var password = $("#password-input").val();
-            var confirmPassword = $("#confirm-password-input").val();
-
-            if (password === confirmPassword) {
-                $("#confirm-password-error").text(""); // Clear the error message
-            } else {
-                $("#confirm-password-error").text("The password and confirmation password do not match.");
-            }
-        });
-    });
-</script>
+    <script src="~/Scripts/jquery-3.6.4.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 }
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            // Add event listener to password and confirm password fields
+            $("#password-input, #confirm-password-input").on("keyup", function () {
+                var password = $("#password-input").val();
+                var confirmPassword = $("#confirm-password-input").val();
+
+                if (password === confirmPassword) {
+                    $("#confirm-password-error").text(""); // Clear the error message
+                } else {
+                    $("#confirm-password-error").text("The password and confirmation password do not match.");
+                }
+            });
+        });
+    </script>
+    }*@
