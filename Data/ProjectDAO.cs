@@ -229,6 +229,34 @@ namespace DonationApplication.Data
             return project;
         }
 
+        public int DeleteProject(int id)
+        {
+            int success = 1;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand("dbo.DELETE_PROJECT", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", id);
+
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                return success;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                success = 0;
+                return success;
+            }
+        }
+
         public List<string> GetImageListByProjectCode(string projectCode)
         {
             List<string> images = new List<string>();
