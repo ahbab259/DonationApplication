@@ -105,7 +105,7 @@ namespace DonationApplication.Controllers
             }
         }
 
-        public ActionResult CountryDetails(string country_code)
+        public ActionResult GetOrganizationByCountry(string country_code)
         {
             List<OrganizationsModel> organizations = new List<OrganizationsModel>();
             OrganizationDAO organizationsDAO = new OrganizationDAO();

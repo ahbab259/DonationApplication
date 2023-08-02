@@ -123,6 +123,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DonationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrganizationsController.cs" />
     <Compile Include="Controllers\PayPalController.cs" />
@@ -135,6 +136,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CountryModel.cs" />
+    <Compile Include="Models\DonationModel.cs" />
     <Compile Include="Models\OrganizationsModel.cs" />
     <Compile Include="Models\ProjectModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -190,6 +192,7 @@
     <Content Include="Views\PayPal\PaymentWithPaypalFailure.cshtml" />
     <Content Include="Views\Projects\GetProjectDetails.cshtml" />
     <Content Include="Views\Home\RegisterNewUser.cshtml" />
+    <Content Include="Views\Donation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
