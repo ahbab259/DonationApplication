@@ -21,11 +21,21 @@ namespace DonationApplication.Controllers
             return View();
         }
 
+        //public JsonResult GetOrgByCountryCode(string countryCode)
         public JsonResult GetOrgByCountryCode(string countryCode)
         {
             List<OrganizationsModel> orgList = new List<OrganizationsModel>();
             orgList = _orgDataFromDB.GetOrganizationByCountryCode(countryCode);
+            //ViewBag.OrgList = new SelectList(orgList, "OrganizationCode", "OrganizationName");
             return Json(orgList, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetProjByOrgCode(string orgCode)
+        {
+            List<ProjectModel> projList = new List<ProjectModel>();
+            projList = _projFromDB.GetProjectsByOrganizationCode(orgCode);
+            //ViewBag.OrgList = new SelectList(orgList, "OrganizationCode", "OrganizationName");
+            return Json(projList, JsonRequestBehavior.AllowGet);
         }
     }
 }

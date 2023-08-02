@@ -18,18 +18,17 @@
     }
 </div>
 
+<div class="form-group">
+    @Html.LabelFor(model => model.OrganizationCode, "Organization:")
+
+    @Html.DropDownListFor(model => model.OrganizationCode, new SelectList(" "), "--Select Organization--", new { @class = "form-control" })
+    
+</div>
+
     <div class="form-group">
-        @Html.LabelFor(model => model.ORGANIZATION_NAME, "Organization:")
+        @Html.LabelFor(model => model.PROJECT_CODE, "Project:")
 
-        
-        @Html.DropDownListFor(model => model.ORGANIZATION_NAME, new SelectList(" "), "--Select Organization--", new { @class = "form-control" })
-        
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.PROJECT_NAME, "Project:")
-
-        @Html.DropDownListFor(model => model.PROJECT_NAME, new SelectList(" "), "--Select Project--", new { @class = "form-control" })
+        @Html.DropDownListFor(model => model.PROJECT_CODE, new SelectList(" "), "--Select Project--", new { @class = "form-control" })
         
     </div>
 
@@ -46,9 +45,25 @@
     $(document).ready(function () {
         $("#COUNTRY_NAME").change(function () {
             $.get("/Donation/GetOrgByCountryCode", { countryCode: $("#COUNTRY_NAME").val() }, function (data) {
-                $("OrganizationCode").empty();
-                $each(data, function (index, row) {
-                    $("OrganizationCode").append("<option value='" + row.OrganizationCode + "'>" + row.OrganizationName+"</option>")
+                $("#OrganizationCode").empty();
+                $.each(data, function (index, row) {
+                    $("#OrganizationCode").append("<option value='" + row.OrganizationCode + "'>" + row.OrganizationName + "</option>")
+                })
+
+                $.get("/Donation/GetProjByOrgCode", { orgCode: $("#OrganizationCode").val() }, function (data) {
+                    $("#PROJECT_CODE").empty();
+                    $.each(data, function (index, row) {
+                        $("#PROJECT_CODE").append("<option value='" + row.PROJECT_CODE + "'>" + row.PROJECT_NAME + "</option>")
+                    })
+                });
+            });           
+        })
+
+        $("#OrganizationCode").change(function () {
+            $.get("/Donation/GetProjByOrgCode", { orgCode: $("#OrganizationCode").val() }, function (data) {
+                $("#PROJECT_CODE").empty();
+                $.each(data, function (index, row) {
+                    $("#PROJECT_CODE").append("<option value='" + row.PROJECT_CODE + "'>" + row.PROJECT_NAME + "</option>")
                 })
             });
         })

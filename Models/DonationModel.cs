@@ -13,8 +13,10 @@ namespace DonationApplication.Models
         public string USER_NAME { get; set; }
         public string COUNTRY_CODE { get; set; }
         public string COUNTRY_NAME { get; set; }
-        public string ORGANIZATION_NAME { get; set; }
+        public string OrganizationCode { get; set; }
+        public string OrganizationName { get; set; }
         public string PROJECT_NAME { get; set; }
+        public string PROJECT_CODE { get; set; }
         public decimal DONATION_AMOUNT { get; set; }
     }
 }
